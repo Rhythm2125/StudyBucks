@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBucks - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 50%, #4C1D95 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .main-logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFFFFF, #E5E7EB, #FFFFFF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.7;
+            font-style: italic;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        .coming-soon-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-heading {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: bounceIn 2s ease-out 1.5s both;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.8;
+            text-align: center;
+            opacity: 0.9;
+            animation: fadeInUp 2s ease-out 2s both;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-book {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-book::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .floating-brain {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .floating-dollar {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.2);
+            font-weight: bold;
+            animation: rotate 8s linear infinite;
+        }
+
+        .floating-leaf {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0 100% 0 100%;
+            animation: sway 5s ease-in-out infinite;
+        }
+
+        /* Position floating elements */
+        .floating-book:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-book:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
+        .floating-brain:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .floating-brain:nth-child(4) { top: 40%; right: 10%; animation-delay: 3s; }
+        .floating-dollar:nth-child(5) { top: 15%; right: 25%; animation-delay: 1.5s; }
+        .floating-dollar:nth-child(6) { bottom: 20%; right: 30%; animation-delay: 4s; }
+        .floating-leaf:nth-child(7) { top: 70%; left: 5%; animation-delay: 2.5s; }
+        .floating-leaf:nth-child(8) { bottom: 15%; left: 40%; animation-delay: 0.5s; }
+
+        /* Animated Background Particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: floatUp 15s linear infinite;
+        }
+
+        /* Generate particles with different positions and delays */
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            66% {
+                transform: translateY(-10px) rotate(-3deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(0deg) translateX(0px);
+            }
+            25% {
+                transform: rotate(5deg) translateX(10px);
+            }
+            75% {
+                transform: rotate(-5deg) translateX(-10px);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0vh) scale(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-logo {
+                font-size: 2.5rem;
+            }
+            
+            .main-heading {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-logo {
+                font-size: 2rem;
+            }
+            
+            .main-heading {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Floating Educational Elements -->
+    <div class="floating-elements">
+        <div class="floating-book"></div>
+        <div class="floating-book"></div>
+        <div class="floating-brain"></div>
+        <div class="floating-brain"></div>
+        <div class="floating-dollar">$</div>
+        <div class="floating-dollar">$</div>
+        <div class="floating-leaf"></div>
+        <div class="floating-leaf"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo-section">
+            <div class="main-logo">studybucks</div>
+            <div class="tagline">Smart Learning, Smart Earning</div>
+            <div class="subtitle">Where Education Meets Opportunity</div>
+        </div>
+
+        <div class="coming-soon-text">
+            <h1 class="main-heading">Coming Soon</h1>
+            <p class="description">
+                We're crafting something extraordinary for learners like you. StudyBucks is preparing to revolutionize how you approach education by combining intelligent learning tools with rewarding opportunities. Get ready to unlock your potential and turn your study time into valuable achievements.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive particles on mouse movement
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) { // Only create particles occasionally
+                createInteractiveParticle(e.clientX, e.clientY);
+            }
+        });
+
+        function createInteractiveParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = '6px';
+            particle.style.height = '6px';
+            particle.style.background = 'rgba(255,255,255,0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '5';
+            particle.style.animation = 'fadeOut 2s ease-out forwards';
+            
+            document.body.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 2000);
+        }
+
+        // Add fadeOut animation for interactive particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) translateY(-50px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add a subtle typing effect to the description
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.opacity = '1';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Wait for page load then start typing effect
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const description = document.querySelector('.description');
+                const originalText = description.textContent;
+                typeWriter(description, originalText, 30);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
