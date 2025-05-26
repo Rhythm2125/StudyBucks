@@ -3,440 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyBucks - Coming Soon</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="imgs/studybucks logo - bg removed.png" type="image/png">
+    <link rel="stylesheet" href="components/fixed.css">
+    <script src="https://kit.fontawesome.com/1c03889634.js" crossorigin="anonymous"></script>
+    <title>StudyBucks - Home</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .hero {
+            padding: 100px 20px 60px;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 50%, #4C1D95 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: white;
-            position: relative;
+        .tag {
+            display: inline-block;
+            background-color: #3c0e6d;
+            color: #d1aaff;
+            padding: 5px 15px;
+            border-radius: 999px;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
-        .container {
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            color: #ffffff;
+        }
+
+        .highlight-alt {
+            color: #a259ff;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 700px;
+        }
+
+        .buttons {
+            margin-top: 30px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn.primary {
+            background: white;
+            backdrop-filter: blur(8px);
+            color: black;
+            text-decoration: none;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            backdrop-filter: blur(8px);
+            border: #000000 2px solid;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin: 10px;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .feature-grid, .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #0d0d0d;
+            border-radius: 12px;
             padding: 20px;
-            position: relative;
-            z-index: 10;
+            text-align: left;
         }
 
-        .logo-section {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: fadeInDown 1.5s ease-out;
+        .card h3 {
+            margin-top: 12px;
+            color: white;
         }
 
-        .main-logo {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #FFFFFF, #E5E7EB, #FFFFFF);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
+        .card p {
+            color: #aaa;
         }
 
-        .tagline {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease-out 0.5s both;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.7;
-            font-style: italic;
-            animation: fadeIn 2s ease-out 1s both;
-        }
-
-        .coming-soon-text {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .main-heading {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: bounceIn 2s ease-out 1.5s both;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
-        }
-
-        .description {
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.8;
-            text-align: center;
-            opacity: 0.9;
-            animation: fadeInUp 2s ease-out 2s both;
-        }
-
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
+        .course-thumb, .card img {
             width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 12px;
         }
 
-        .floating-book {
-            position: absolute;
-            width: 60px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 5px;
-            animation: float 6s ease-in-out infinite;
+        .course-details {
+            margin-top: 12px;
         }
 
-        .floating-book::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 100%;
-            background: rgba(255,255,255,0.3);
-            left: 50%;
-            transform: translateX(-50%);
+        .course-details .level, .duration, .modules {
+            display: inline-block;
+            background: #3a006e;
+            color: #d1aaff;
+            font-size: 12px;
+            margin: 2px;
+            padding: 3px 10px;
+            border-radius: 999px;
         }
 
-        .floating-brain {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: pulse 4s ease-in-out infinite;
+        .course-details h3 {
+            margin: 10px 0 5px;
+            color: white;
         }
 
-        .floating-dollar {
-            position: absolute;
-            font-size: 2rem;
-            color: rgba(255,255,255,0.2);
-            font-weight: bold;
-            animation: rotate 8s linear infinite;
+        .course-button {
+            display: flex;
+            width: 80%;
+            background: transparent;
+            backdrop-filter: blur(8px);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: background 0.3s;
         }
 
-        .floating-leaf {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 0 100% 0 100%;
-            animation: sway 5s ease-in-out infinite;
+        .course-button i {
+            margin-left: 65%;
         }
 
-        /* Position floating elements */
-        .floating-book:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .floating-book:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
-        .floating-brain:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
-        .floating-brain:nth-child(4) { top: 40%; right: 10%; animation-delay: 3s; }
-        .floating-dollar:nth-child(5) { top: 15%; right: 25%; animation-delay: 1.5s; }
-        .floating-dollar:nth-child(6) { bottom: 20%; right: 30%; animation-delay: 4s; }
-        .floating-leaf:nth-child(7) { top: 70%; left: 5%; animation-delay: 2.5s; }
-        .floating-leaf:nth-child(8) { bottom: 15%; left: 40%; animation-delay: 0.5s; }
-
-        /* Animated Background Particles */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            animation: floatUp 15s linear infinite;
-        }
-
-        /* Generate particles with different positions and delays */
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 0.7;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            66% {
-                transform: translateY(-10px) rotate(-3deg);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes sway {
-            0%, 100% {
-                transform: rotate(0deg) translateX(0px);
-            }
-            25% {
-                transform: rotate(5deg) translateX(10px);
-            }
-            75% {
-                transform: rotate(-5deg) translateX(-10px);
-            }
-        }
-
-        @keyframes floatUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) scale(0);
-            }
-            10% {
-                opacity: 1;
-                transform: translateY(90vh) scale(1);
-            }
-            90% {
-                opacity: 1;
-                transform: translateY(10vh) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(0vh) scale(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main-logo {
-                font-size: 2.5rem;
-            }
-            
-            .main-heading {
-                font-size: 2.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .description {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-            
-            .floating-elements {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-logo {
-                font-size: 2rem;
-            }
-            
-            .main-heading {
-                font-size: 2rem;
-            }
+        .course-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background Particles -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <!-- Floating Educational Elements -->
-    <div class="floating-elements">
-        <div class="floating-book"></div>
-        <div class="floating-book"></div>
-        <div class="floating-brain"></div>
-        <div class="floating-brain"></div>
-        <div class="floating-dollar">$</div>
-        <div class="floating-dollar">$</div>
-        <div class="floating-leaf"></div>
-        <div class="floating-leaf"></div>
-    </div>
-
-    <div class="container">
-        <div class="logo-section">
-            <div class="main-logo">studybucks</div>
-            <div class="tagline">Smart Learning, Smart Earning</div>
-            <div class="subtitle">Where Education Meets Opportunity</div>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imgs/studybucks logo - bg removed.png" alt="StudyBucks Logo">
         </div>
 
-        <div class="coming-soon-text">
-            <h1 class="main-heading">Coming Soon</h1>
-            <p class="description">
-                We're crafting something extraordinary for learners like you. StudyBucks is preparing to revolutionize how you approach education by combining intelligent learning tools with rewarding opportunities. Get ready to unlock your potential and turn your study time into valuable achievements.
-            </p>
+        <div class="dropdown">Tutorials <i class="fa-solid fa-circle-chevron-down"></i></div>
+        <div class="dropdown">Exercises <i class="fa-solid fa-circle-chevron-down"></i></div>
+        <div class="dropdown">Certificates <i class="fa-solid fa-circle-chevron-down"></i></div>
+        <div class="dropdown">Services <i class="fa-solid fa-circle-chevron-down"></i></div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search courses, topics, or services..." />
         </div>
-    </div>
 
-    <script>
-        // Add some interactive particles on mouse movement
-        document.addEventListener('mousemove', function(e) {
-            if (Math.random() > 0.95) { // Only create particles occasionally
-                createInteractiveParticle(e.clientX, e.clientY);
-            }
-        });
+        <i class="fas fa-moon toggle-theme"></i>
 
-        function createInteractiveParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            particle.style.width = '6px';
-            particle.style.height = '6px';
-            particle.style.background = 'rgba(255,255,255,0.6)';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '5';
-            particle.style.animation = 'fadeOut 2s ease-out forwards';
-            
-            document.body.appendChild(particle);
-            
-            // Remove particle after animation
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.parentNode.removeChild(particle);
-                }
-            }, 2000);
-        }
+        <div class="credits"><i class="fas fa-star"></i> 0 Credits</div>
 
-        // Add fadeOut animation for interactive particles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeOut {
-                0% {
-                    opacity: 1;
-                    transform: scale(1) translateY(0);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) translateY(-50px);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        <div class="plus">Plus</div>
 
-        // Add a subtle typing effect to the description
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.opacity = '1';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
+        <div class="spaces"><i class="fas fa-code"></i> Spaces</div>
 
-        // Wait for page load then start typing effect
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                const description = document.querySelector('.description');
-                const originalText = description.textContent;
-                typeWriter(description, originalText, 30);
-            }, 3000);
-        });
-    </script>
+        <button class="certified-btn">Get Certified</button>
+
+        <i class="fas fa-user-circle user-icon"></i>  
+    </nav>
+
+    <sidebar class="sidebar">
+        <ul>
+            <a href="index.html"><li class="active"><i class="fas fa-home"></i><span>Dashboard</span></li></a>
+            <a href="pages/nm.html"><li><i class="fas fa-file-alt"></i><span>Notes Maker</span></li></a>
+            <a href="pages/ce.html"><li><i class="fas fa-graduation-cap"></i><span>Course Enrollment</span></li></a>
+            <a href="pages/erd.html"><li><i class="fas fa-project-diagram"></i><span>AI ER Diagram Maker</span></li></a>
+            <a href="pages/rm.html"><li><i class="fas fa-share-alt"></i><span>AI Roadmap Maker</span></li></a>
+            <a href="pages/task.html"><li><i class="fas fa-check-square"></i><span>Daily Tasks & To-Do</span></li></a>
+            <a href="#"><li><i class="fas fa-sitemap"></i><span>AI Flowchart Maker</span></li></a>
+            <a href="#"><li><i class="fas fa-clipboard-list"></i><span>Flashcards</span></li></a>
+            <a href="#"><li><i class="fas fa-book"></i><span>Quizzes</span></li></a>
+            <a href="#"><li><i class="fas fa-calendar-alt"></i><span>Study Planner</span></li></a>
+            <a href="#"><li><i class="fas fa-users"></i><span>Study Groups</span></li></a>
+            <a href="#"><li><i class="fas fa-star"></i><span>Credits & Rewards</span></li></a>
+        </ul>
+    </sidebar>
+
+    <section class="hero">
+        <div class="tag">AI-Powered Learning Platform</div>
+        <h1>Learn <span class="highlight">Smarter</span>,
+            <span class="highlight-alt">Earn Faster</span></h1>
+        <p>Personalized learning experiences powered by artificial intelligence to help<br>you master any subject and advance your career.</p>
+        <div class="buttons">
+            <button class="btn primary">
+                <i class="fas fa-bolt"></i> Start Learning
+            </button>
+
+            <button class="btn secondary">
+                <i class="fas fa-book-open"></i> Browse Courses
+            </button>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Why Choose StudyEarn?</h2>
+        <p class="description">Our platform combines cutting-edge AI technology with proven learning methods to help you achieve your goals.</p>
+        <div class="feature-grid">
+        <div class="card">
+            <h3>AI-Powered Learning</h3>
+            <p>Customized curriculum that maximizes your learning efficiency.</p>
+        </div>
+        <div class="card">
+            <h3>Interactive Tools</h3>
+            <p>From flashcards to diagrams, learn with tools that make concepts stick.</p>
+        </div>
+        <div class="card">
+            <h3>Industry Certifications</h3>
+            <p>Courses aligned with industry standards and certification paths.</p>
+        </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Popular Learning Paths</h2>
+        <p class="description">Explore our most popular courses and learning paths to kickstart your journey.</p>
+        <div class="courses-grid">
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://miro.medium.com/v2/resize:fit:1200/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg" alt="Web Development Course">
+                </div>
+                <div class="course-details">
+                    <h3>Web Development</h3>
+                    <span class="level">Beginner to Advanced</span>
+                    <span class="duration">6 months</span>
+                    <span class="modules">24 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://community.nasscom.in/sites/default/files/styles/960_x_600/public/media/images/DATA%20SCIENCE%20MODEL.jpg?itok=Uw9IQgUd" alt="Data Science Course">
+                </div>
+                <div class="course-details">
+                    <h3>Data Science</h3>
+                    <span class="level">Intermediate</span>
+                    <span class="duration">4 months</span>
+                    <span class="modules">18 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://admin.12grids.com/uploads/blogs/original_cover_images/Webp/Best_Mobile_App_Development_Technologies_12Grids.webp" alt="Mobile App Development Course">
+                </div>
+                <div class="course-details">
+                    <h3>Mobile App Development</h3>
+                    <span class="level">Intermediate</span>
+                    <span class="duration">5 months</span>
+                    <span class="modules">20 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://d3caycb064h6u1.cloudfront.net/wp-content/uploads/2025/02/what-is-machine-learning-and-machine-learning-techniques-67bc2a273a4f0-e1740981449660.webp" alt="Machine Learning Course">
+                </div>
+                <div class="course-details">
+                    <h3>Machine Learning</h3>
+                    <span class="level">Advanced</span>
+                    <span class="duration">8 months</span>
+                    <span class="modules">32 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://www.extwebtech.com/wp-content/uploads/2023/10/UI-UX-designer.webp" alt="UI/UX Design Course">
+                </div>
+                <div class="course-details">
+                    <h3>UI/UX Design</h3>
+                    <span class="level">Beginner to Intermediate</span>
+                    <span class="duration">3 months</span>
+                    <span class="modules">15 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="card">
+                <div class="course-thumb">
+                    <img src="https://www.bitlyft.com/hubfs/Cybersecurity-solutions.jpeg" alt="Cybersecurity Course">
+                </div>
+                <div class="course-details">
+                    <h3>Cybersecurity</h3>
+                    <span class="level">Intermediate to Advanced</span>
+                    <span class="duration">7 months</span>
+                    <span class="modules">28 Modules</span>
+                </div>
+                <button class="course-button">Enroll Now<i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

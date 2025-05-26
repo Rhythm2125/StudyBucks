@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to top, #000000, #1a003d, #2d007a);
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #000000;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid #4c00b0;
+}
+
+.logo img {
+    display: flex;
+    width: 100px;
+    padding: 8px;
+}
+
+.nav-dropdown {
+    position: relative;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.search-box input {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 8px 14px;
+    border-radius: 6px;
+    width: 300px;
+    color: white;
+}
+
+.toggle-theme {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    background-color: transparent;
+}
+
+.credits {
+    background-color: #000000;
+    backdrop-filter: blur(10px);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 1rem;
+    border: 1px solid #333;
+    color: #ffffff;
+}
+
+.credits i {
+    width: 20px;
+    height: 20px;
+    color: #a259ff;
+}
+
+.plus, .spaces, .teachers {
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+}
+
+.certified-btn {
+    background-color: #a259ff;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user-icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    padding-top: 90px;
+    padding-right: 10px;
+    background-color: #000000;
+    backdrop-filter: blur(10px);
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar:hover {
+    width: 240px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.sidebar ul li i {
+    font-size: 18px;
+    margin-right: 16px;
+    min-width: 24px;
+    text-align: center;
+}
+
+.sidebar ul li span {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover ul li span {
+    opacity: 1;
+}
+
+.sidebar ul li:hover {
+    background-color: #a070ff;
+    border-radius: 10px;
+}
+
+.sidebar ul li.active {
+    background-color: #a259ff;
+    border-radius: 10px;
+}
+
+.sidebar ul li.highlight {
+    background-color: #a259ff;
+    margin-top: 2px;
+    border-radius: 10px;
+}
