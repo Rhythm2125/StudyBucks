@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../imgs/studybucks logo - bg removed.png" type="image/png">
     <link rel="stylesheet" href="../components/fixed.css">
+    <script src="../components/navbar.js"></script>
+    <link rel="stylesheet" href="../components/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/1c03889634.js" crossorigin="anonymous"></script>
     <title>StudyBucks - Course Enrollment</title>
     <style>
+
 
     </style>
 </head>
@@ -17,32 +21,171 @@
         <div class="logo">
             <img src="../imgs/studybucks logo - bg removed.png" alt="StudyBucks Logo">
         </div>
-
-        <div class="dropdown">Tutorials <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Exercises <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Certificates <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Services <i class="fa-solid fa-circle-chevron-down"></i></div>
+        
+        <div class="nav-menu">
+            <div class="dropdown">
+                Tutorials <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">HTML & CSS</a>
+                    <a href="#" class="dropdown-item">JavaScript</a>
+                    <a href="#" class="dropdown-item">Python</a>
+                    <a href="#" class="dropdown-item">Data Science</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">View All Tutorials</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Exercises <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Code Challenges</a>
+                    <a href="#" class="dropdown-item">Quizzes</a>
+                    <a href="#" class="dropdown-item">Projects</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Exercise Dashboard</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Certificates <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Web Development</a>
+                    <a href="#" class="dropdown-item">Data Analysis</a>
+                    <a href="#" class="dropdown-item">Machine Learning</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">My Certificates</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Services <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">AI Tools</a>
+                    <a href="#" class="dropdown-item">Study Planner</a>
+                    <a href="#" class="dropdown-item">Flashcards</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">All Services</a>
+                </div>
+            </div>
+        </div>
 
         <div class="search-box">
+            <i class="fas fa-search"></i>
             <input type="text" placeholder="Search courses, topics, or services..." />
         </div>
 
-        <i class="fas fa-moon toggle-theme"></i>
+        <div class="nav-right">
+            <div class="credits">
+                <i class="fas fa-star"></i> 0 Credits
+            </div>
 
-        <div class="credits"><i class="fas fa-star"></i> 0 Credits</div>
+            <div class="plus">Plus</div>
 
-        <div class="plus">Plus</div>
+            <div class="spaces"><i class="fas fa-code"></i> Spaces</div>
 
-        <div class="spaces"><i class="fas fa-code"></i> Spaces</div>
+            <button class="certified-btn">Get Certified</button>
 
-        <button class="certified-btn">Get Certified</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <i class="fas fa-user-circle user-icon"></i>  
+            <i class="fas fa-user-circle user-icon"></i>
+        </div>
     </nav>
 
-    <sidebar class="sidebar">
+    <!-- Mobile Search -->
+    <div class="mobile-search" id="mobileSearch">
+        <div class="mobile-search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search courses, topics, or services..." />
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
         <ul>
-            <a href="../index.html"><li><i class="fas fa-home"></i><span>Dashboard</span></li></a>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="nm.html"><i class="fas fa-file-alt"></i> Notes Maker</a></li>
+            <li><a href="ce.html"><i class="fas fa-graduation-cap"></i> Course Enrollment</a></li>
+            <li><a href="erd.html"><i class="fas fa-project-diagram"></i> AI ER Diagram Maker</a></li>
+            <li><a href="rm.html"><i class="fas fa-share-alt"></i> AI Roadmap Maker</a></li>
+            <li><a href="task.html"><i class="fas fa-check-square"></i> Daily Tasks & To-Do</a></li>
+            <li><a href="#"><i class="fas fa-sitemap"></i> AI Flowchart Maker</a></li>
+            <li><a href="#"><i class="fas fa-clipboard-list"></i> Flashcards</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> Quizzes</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Study Planner</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Study Groups</a></li>
+            <li><a href="#"><i class="fas fa-star"></i> Credits & Rewards</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Tutorials</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">HTML & CSS</a>
+                <a href="#">JavaScript</a>
+                <a href="#">Python</a>
+                <a href="#">Data Science</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">View All Tutorials</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Exercises</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">Code Challenges</a>
+                <a href="#">Quizzes</a>
+                <a href="#">Projects</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">Exercise Dashboard</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Certificates</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">Web Development</a>
+                <a href="#">Data Analysis</a>
+                <a href="#">Machine Learning</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">My Certificates</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Services</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">AI Tools</a>
+                <a href="#">Study Planner</a>
+                <a href="#">Flashcards</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">All Services</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile menus -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Desktop Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <a href="index.html"><li><i class="fas fa-home"></i><span>Dashboard</span></li></a>
             <a href="nm.html"><li><i class="fas fa-file-alt"></i><span>Notes Maker</span></li></a>
             <a href="ce.html"><li class="active"><i class="fas fa-graduation-cap"></i><span>Course Enrollment</span></li></a>
             <a href="erd.html"><li><i class="fas fa-project-diagram"></i><span>AI ER Diagram Maker</span></li></a>
@@ -55,6 +198,22 @@
             <a href="#"><li><i class="fas fa-users"></i><span>Study Groups</span></li></a>
             <a href="#"><li><i class="fas fa-star"></i><span>Credits & Rewards</span></li></a>
         </ul>
-    </sidebar>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav-right">
+        <a href="#" class="mobile-nav-right-item" id="mobileSidebarBtn">
+            <i class="fas fa-bars"></i>
+            <span>Tools</span>
+        </a>
+        <a href="#" class="mobile-nav-right-item" id="mobileSearchBtn">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#" class="mobile-nav-right-item" id="mobileMenuNavBtn">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 </body>
 </html>

@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="imgs/studybucks logo - bg removed.png" type="image/png">
     <link rel="stylesheet" href="components/fixed.css">
+    <script src="components/navbar.js"></script>
+    <link rel="stylesheet" href="components/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/1c03889634.js" crossorigin="anonymous"></script>
     <title>StudyBucks - Home</title>
     <style>
-        .hero {
+       .hero {
             padding: 100px 20px 60px;
+            text-align: center;
         }
 
         .tag {
@@ -21,12 +25,21 @@
             border-radius: 999px;
             font-size: 14px;
             margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .hero h1 {
-            font-size: 48px;
-            font-weight: bold;
+            font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+            font-weight: 700;
             margin: 20px 0;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #a259ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .highlight {
@@ -39,7 +52,7 @@
 
         .hero p {
             color: #cccccc;
-            font-size: 18px;
+            font-size: 1.125rem;
             line-height: 1.6;
             margin: 20px auto;
             max-width: 700px;
@@ -55,66 +68,83 @@
 
         .btn {
             padding: 12px 24px;
-            font-size: 16px;
+            font-size: 1rem;
+            font-weight: 500;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            min-width: 160px;
         }
 
         .btn.primary {
-            background: white;
-            backdrop-filter: blur(8px);
-            color: black;
-            text-decoration: none;
+            background: linear-gradient(135deg, #a259ff, #7a3dff);
+            color: white;
+            box-shadow: 0 4px 15px rgba(162, 89, 255, 0.3);
         }
 
         .btn.secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
-            border: #000000 2px solid;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            text-decoration: none;
         }
 
         .btn:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(162, 89, 255, 0.4);
+            opacity: 0.9;
         }
 
         .section-title {
-            font-size: 32px;
-            margin: 10px;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin: 40px 0 20px;
             text-align: center;
             color: #ffffff;
-            margin-top: 10px;
+            font-weight: 700;
         }
 
         .feature-grid, .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 24px;
             max-width: 1250px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
         .card {
-            background: #0d0d0d;
+            background: rgba(13, 13, 13, 0.7);
             border-radius: 12px;
-            padding: 20px;
+            padding: 24px;
             text-align: left;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(162, 89, 255, 0.2);
+            border-color: rgba(162, 89, 255, 0.3);
         }
 
         .card h3 {
-            margin-top: 12px;
+            margin-top: 16px;
             color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
         .card p {
             color: #aaa;
+            margin: 12px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .course-thumb, .card img {
@@ -122,50 +152,66 @@
             height: 180px;
             border-radius: 8px;
             object-fit: cover;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .course-thumb, 
+        .card:hover img {
+            transform: scale(1.02);
         }
 
         .course-details {
-            margin-top: 12px;
+            margin-top: 16px;
         }
 
-        .course-details .level, .duration, .modules {
+        .course-details .level, 
+        .course-details .duration, 
+        .course-details .modules {
             display: inline-block;
-            background: #3a006e;
+            background: rgba(162, 89, 255, 0.2);
             color: #d1aaff;
-            font-size: 12px;
-            margin: 2px;
-            padding: 3px 10px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            padding: 4px 12px;
             border-radius: 999px;
+            font-weight: 500;
         }
 
         .course-details h3 {
-            margin: 10px 0 5px;
+            margin: 12px 0 8px;
             color: white;
+            font-size: 1.25rem;
         }
 
         .course-button {
-            display: flex;
-            width: 80%;
-            background: transparent;
-            backdrop-filter: blur(8px);
-            border: none;
-            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: rgba(162, 89, 255, 0.1);
+            border: 1px solid rgba(162, 89, 255, 0.3);
+            border-radius: 8px;
             color: white;
-            padding: 8px 16px;
+            padding: 10px 16px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.9rem;
             margin-top: 20px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
 
         .course-button i {
-            margin-left: 65%;
+            transition: transform 0.3s ease;
         }
 
         .course-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            background: rgba(162, 89, 255, 0.2);
+            border-color: rgba(162, 89, 255, 0.5);
+        }
+
+        .course-button:hover i {
+            transform: translateX(3px);
         }
     </style>
 </head>
@@ -174,30 +220,169 @@
         <div class="logo">
             <img src="imgs/studybucks logo - bg removed.png" alt="StudyBucks Logo">
         </div>
-
-        <div class="dropdown">Tutorials <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Exercises <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Certificates <i class="fa-solid fa-circle-chevron-down"></i></div>
-        <div class="dropdown">Services <i class="fa-solid fa-circle-chevron-down"></i></div>
+        
+        <div class="nav-menu">
+            <div class="dropdown">
+                Tutorials <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">HTML & CSS</a>
+                    <a href="#" class="dropdown-item">JavaScript</a>
+                    <a href="#" class="dropdown-item">Python</a>
+                    <a href="#" class="dropdown-item">Data Science</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">View All Tutorials</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Exercises <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Code Challenges</a>
+                    <a href="#" class="dropdown-item">Quizzes</a>
+                    <a href="#" class="dropdown-item">Projects</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Exercise Dashboard</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Certificates <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">Web Development</a>
+                    <a href="#" class="dropdown-item">Data Analysis</a>
+                    <a href="#" class="dropdown-item">Machine Learning</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">My Certificates</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                Services <i class="fas fa-chevron-down"></i>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">AI Tools</a>
+                    <a href="#" class="dropdown-item">Study Planner</a>
+                    <a href="#" class="dropdown-item">Flashcards</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">All Services</a>
+                </div>
+            </div>
+        </div>
 
         <div class="search-box">
+            <i class="fas fa-search"></i>
             <input type="text" placeholder="Search courses, topics, or services..." />
         </div>
 
-        <i class="fas fa-moon toggle-theme"></i>
+        <div class="nav-right">
+            <div class="credits">
+                <i class="fas fa-star"></i> 0 Credits
+            </div>
 
-        <div class="credits"><i class="fas fa-star"></i> 0 Credits</div>
+            <div class="plus">Plus</div>
 
-        <div class="plus">Plus</div>
+            <div class="spaces"><i class="fas fa-code"></i> Spaces</div>
 
-        <div class="spaces"><i class="fas fa-code"></i> Spaces</div>
+            <button class="certified-btn">Get Certified</button>
 
-        <button class="certified-btn">Get Certified</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <i class="fas fa-user-circle user-icon"></i>  
+            <i class="fas fa-user-circle user-icon"></i>
+        </div>
     </nav>
 
-    <sidebar class="sidebar">
+    <!-- Mobile Search -->
+    <div class="mobile-search" id="mobileSearch">
+        <div class="mobile-search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search courses, topics, or services..." />
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="pages/nm.html"><i class="fas fa-file-alt"></i> Notes Maker</a></li>
+            <li><a href="pages/ce.html"><i class="fas fa-graduation-cap"></i> Course Enrollment</a></li>
+            <li><a href="pages/erd.html"><i class="fas fa-project-diagram"></i> AI ER Diagram Maker</a></li>
+            <li><a href="pages/rm.html"><i class="fas fa-share-alt"></i> AI Roadmap Maker</a></li>
+            <li><a href="pages/task.html"><i class="fas fa-check-square"></i> Daily Tasks & To-Do</a></li>
+            <li><a href="#"><i class="fas fa-sitemap"></i> AI Flowchart Maker</a></li>
+            <li><a href="#"><i class="fas fa-clipboard-list"></i> Flashcards</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> Quizzes</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Study Planner</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Study Groups</a></li>
+            <li><a href="#"><i class="fas fa-star"></i> Credits & Rewards</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Tutorials</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">HTML & CSS</a>
+                <a href="#">JavaScript</a>
+                <a href="#">Python</a>
+                <a href="#">Data Science</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">View All Tutorials</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Exercises</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">Code Challenges</a>
+                <a href="#">Quizzes</a>
+                <a href="#">Projects</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">Exercise Dashboard</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Certificates</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">Web Development</a>
+                <a href="#">Data Analysis</a>
+                <a href="#">Machine Learning</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">My Certificates</a>
+            </div>
+        </div>
+        
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-title">
+                <span>Services</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="mobile-dropdown-content">
+                <a href="#">AI Tools</a>
+                <a href="#">Study Planner</a>
+                <a href="#">Flashcards</a>
+                <div style="height: 1px; background-color: #333; margin: 8px 0;"></div>
+                <a href="#">All Services</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile menus -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Desktop Sidebar -->
+    <div class="sidebar">
         <ul>
             <a href="index.html"><li class="active"><i class="fas fa-home"></i><span>Dashboard</span></li></a>
             <a href="pages/nm.html"><li><i class="fas fa-file-alt"></i><span>Notes Maker</span></li></a>
@@ -212,7 +397,23 @@
             <a href="#"><li><i class="fas fa-users"></i><span>Study Groups</span></li></a>
             <a href="#"><li><i class="fas fa-star"></i><span>Credits & Rewards</span></li></a>
         </ul>
-    </sidebar>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav-right">
+        <a href="#" class="mobile-nav-right-item" id="mobileSidebarBtn">
+            <i class="fas fa-bars"></i>
+            <span>Tools</span>
+        </a>
+        <a href="#" class="mobile-nav-right-item" id="mobileSearchBtn">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="#" class="mobile-nav-right-item" id="mobileMenuNavBtn">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>Menu</span>
+        </a>
+    </div>
 
     <section class="hero">
         <div class="tag">AI-Powered Learning Platform</div>
@@ -232,7 +433,7 @@
 
     <section>
         <h2 class="section-title">Why Choose StudyEarn?</h2>
-        <p class="description">Our platform combines cutting-edge AI technology with proven learning methods to help you achieve your goals.</p>
+        <p class="description" style="text-align: center;">Our platform combines cutting-edge AI technology with proven learning methods to help you achieve your goals.</p>
         <div class="feature-grid">
         <div class="card">
             <h3>AI-Powered Learning</h3>
@@ -251,7 +452,7 @@
 
     <section>
         <h2 class="section-title">Popular Learning Paths</h2>
-        <p class="description">Explore our most popular courses and learning paths to kickstart your journey.</p>
+        <p class="description" style="text-align: center;">Explore our most popular courses and learning paths to kickstart your journey.</p>
         <div class="courses-grid">
             <div class="card">
                 <div class="course-thumb">
