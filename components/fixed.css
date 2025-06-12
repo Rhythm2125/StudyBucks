@@ -145,19 +145,6 @@ body {
     gap: 20px;
 }
 
-.toggle-theme {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    color: #a259ff;
-    transition: transform 0.3s;
-}
-
-.toggle-theme:hover {
-    transform: scale(1.1);
-}
-
 .credits {
     background-color: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(10px);
@@ -295,15 +282,15 @@ body {
     font-weight: bold;
 }
 
-.sidebar:hover ~ .main-content {
-    margin-left: 240px;
-}
-
 .main-content {
     margin-top: 70px;
     margin-left: 60px;
     padding: 20px;
     transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .main-content {
+    margin-left: 240px;
 }
 
 /* Mobile Menu Button */
